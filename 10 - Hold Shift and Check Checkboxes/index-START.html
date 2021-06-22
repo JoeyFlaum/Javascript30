@@ -113,7 +113,7 @@
         } else if (e.type === "keyup") {
           shiftHold = false;
         }
-        console.log(shiftHold)
+        console.log(shiftHold);
       };
 
       const checkBoxOptions = (e) => {
@@ -123,19 +123,23 @@
         } else if (firstBoxChecked && shiftHold) {
           lastMultipleCheckBoxPosition = e.target.classList[1];
           checkMultipleBoxes();
+        }
       };
-    }
 
-      const checkMultipleBoxes = () =>{
-        checkBoxArray = [Number(firstMultipleCheckBoxPosition),Number(lastMultipleCheckBoxPosition)]
-        checkBoxArray.sort((a,b)=>a-b)
-        console.log(checkBoxArray)
-        checkBox.forEach(box=>{
-            Number(box.classList[1]) >=checkBoxArray[0] && Number(box.classList[1]) <= checkBoxArray[1]?
-            box.checked = true:box.checked = false
-      })
-    }
-   
+      const checkMultipleBoxes = () => {
+        checkBoxArray = [
+          Number(firstMultipleCheckBoxPosition),
+          Number(lastMultipleCheckBoxPosition),
+        ];
+        checkBoxArray.sort((a, b) => a - b);
+        console.log(checkBoxArray);
+        checkBox.forEach((box) => {
+          Number(box.classList[1]) >= checkBoxArray[0] &&
+          Number(box.classList[1]) <= checkBoxArray[1]
+            ? (box.checked = true)
+            : (box.checked = false);
+        });
+      };
 
       window.addEventListener("keydown", isShiftHeld);
       window.addEventListener("keyup", isShiftHeld);
